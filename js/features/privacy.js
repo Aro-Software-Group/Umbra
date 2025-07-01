@@ -311,6 +311,41 @@ class PrivacyManager {
     }
 
     /**
+     * Clear existing data when (re)entering privacy mode.
+     * This is lighter than clearAllData() and targets volatile artefacts
+     * from the previous browsing session while preserving essential
+     * Umbra settings where appropriate.
+     */
+    clearExistingData() {
+        try {
+            // Always purge in-memory session artefacts first
+            this.clearSessionData();
+
+            // Session/local storage
+            if (this.privacySettings.clearSessionStorage) {
+                this.clearSessionStorage();
+            }
+
+            // Only clear localStorage when user explicitly opted-in via settings
+            if (this.privacySettings.clearLocalStorage && this.privacySettings.clearOnExit) {
+                this.clearLocalStorage();
+            }
+
+            // Cookies
+            if (this.privacySettings.clearCookies) {
+                this.clearCookies();
+            }
+
+            // Cache (service-workers / HTTP-cache)
+            this.clearCache();
+
+            console.log('Existing data cleared for fresh privacy session');
+        } catch (error) {
+            console.warn('Failed to clear existing data:', error);
+        }
+    }
+
+    /**
      * Clear browsing history
      */
     clearHistory() {
