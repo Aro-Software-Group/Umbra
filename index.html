@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umbra Browser - Aro Software Group</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/ui.css">
+    <link rel="stylesheet" href="css/browser.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23007ACC'/></svg>">
+</head>
+<body>
+    <div class="umbra-container">
+        <!-- ヘッダー / ナビゲーション -->
+        <header class="umbra-header">
+            <div class="header-left">
+                <div class="logo-container">
+                    <div class="logo-icon"></div>
+                    <span class="logo-text">Umbra</span>
+                </div>
+            </div>
+            
+            <div class="header-center">
+                <div class="tab-container" id="tabContainer">
+                    <div class="tab active" data-tab-id="1">
+                        <span class="tab-title">新しいタブ</span>
+                        <button class="tab-close">×</button>
+                    </div>
+                    <button class="new-tab-btn" id="newTabBtn">+</button>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <button class="header-btn theme-toggle" id="themeToggle" title="テーマ切り替え">🌙</button>
+                <button class="header-btn privacy-indicator" id="privacyMode" title="プライバシーモード">🛡️</button>
+                <button class="header-btn settings-btn" id="settingsBtn" title="設定">⚙️</button>
+            </div>
+        </header>
+
+        <!-- ナビゲーションバー -->
+        <nav class="nav-bar">
+            <div class="nav-controls">
+                <button class="nav-btn" id="backBtn" title="戻る">←</button>
+                <button class="nav-btn" id="forwardBtn" title="進む">→</button>
+                <button class="nav-btn" id="refreshBtn" title="再読み込み">⟳</button>
+                <button class="nav-btn" id="homeBtn" title="ホーム">🏠</button>
+            </div>
+            
+            <div class="address-bar-container">
+                <div class="security-indicator" id="securityIndicator">🔒</div>
+                <input type="text" class="address-bar" id="addressBar" placeholder="URLまたは検索語句を入力...">
+                <button class="go-btn" id="goBtn">Go</button>
+            </div>
+            
+            <div class="nav-tools">
+                <button class="nav-btn" id="bookmarkBtn" title="ブックマーク">⭐</button>
+                <button class="nav-btn" id="downloadBtn" title="ダウンロード">⬇️</button>
+                <button class="nav-btn" id="menuBtn" title="メニュー">☰</button>
+            </div>
+        </nav>
+
+        <!-- メインコンテンツ エリア -->
+        <main class="main-content">
+            <div class="browser-viewport" id="browserViewport">
+                <div class="start-page" id="startPage">
+                    <div class="start-content">
+                        <div class="welcome-section">
+                            <h1 class="welcome-title">Umbraへようこそ</h1>
+                            <p class="welcome-subtitle">プライバシーとセキュリティを重視した匿名ブラウザ</p>
+                        </div>
+                        
+                        <div class="search-section">
+                            <div class="search-container">
+                                <input type="text" class="main-search" id="mainSearch" placeholder="Webを検索または URLを入力...">
+                                <button class="search-btn" id="searchBtn">🔍</button>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-links">
+                            <h3>よく使うサイト</h3>
+                            <div class="quick-link-grid">
+                                <a class="quick-link-card" href="#" data-url="https://www.google.com">
+                                    <div class="quick-link-icon">G</div>
+                                    <span>Google</span>
+                                </a>
+                                <a class="quick-link-card" href="#" data-url="https://www.bing.com">
+                                    <div class="quick-link-icon">B</div>
+                                    <span>Bing</span>
+                                </a>
+                                <a class="quick-link-card" href="#" data-url="https://www.youtube.com">
+                                    <div class="quick-link-icon">Y</div>
+                                    <span>YouTube</span>
+                                </a>
+                                <a class="quick-link-card" href="#" data-url="https://github.com">
+                                    <div class="quick-link-icon">G</div>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="features-section">
+                            <div class="feature-card">
+                                <div class="feature-icon">🛡️</div>
+                                <h4>プライバシー保護</h4>
+                                <p>履歴を残さない匿名ブラウジング</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🚫</div>
+                                <h4>広告ブロック</h4>
+                                <p>デフォルトで広告をブロック</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🔒</div>
+                                <h4>セキュリティ</h4>
+                                <p>危険サイトの自動検出・ブロック</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 外部サイト表示用iframe -->
+                <iframe class="site-frame hidden" id="siteFrame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" referrerpolicy="no-referrer"></iframe>
+                
+                <!-- ローディング表示 -->
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <p>読み込み中...</p>
+                </div>
+                
+                <!-- エラー表示 -->
+                <div class="error-page hidden" id="errorPage">
+                    <div class="error-content">
+                        <div class="error-icon">⚠️</div>
+                        <h2>ページを読み込めませんでした</h2>
+                        <p id="errorMessage">接続に問題が発生しました。</p>
+                        <button class="retry-btn" id="retryBtn">再試行</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- サイドパネル（設定など） -->
+        <aside class="side-panel hidden" id="sidePanel">
+            <div class="panel-header">
+                <h3 id="panelTitle">設定</h3>
+                <button class="panel-close" id="panelClose">×</button>
+            </div>
+            <div class="panel-content" id="panelContent">
+                <!-- 動的コンテンツ -->
+            </div>
+        </aside>
+
+        <!-- 通知システム -->
+        <div class="notification-container" id="notificationContainer"></div>
+    </div>
+
+    <!-- JavaScript ファイル -->
+    <script src="js/core/umbra.js"></script>
+    <script src="js/core/browser.js"></script>
+    <script src="js/core/tabs.js"></script>
+    <script src="js/features/privacy.js"></script>
+    <script src="js/features/security.js"></script>
+    <script src="js/features/adblock.js"></script>
+    <script src="js/ui/theme.js"></script>
+    <script src="js/ui/notifications.js"></script>
+    <script src="js/utils/storage.js"></script>
+    <script src="js/utils/proxy.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
