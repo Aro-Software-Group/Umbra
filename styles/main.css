@@ -1,0 +1,450 @@
+/* Umbra Browser - Main Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    overflow: hidden;
+}
+
+.browser-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Browser Header */
+.browser-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--header-bg);
+    gap: 12px;
+}
+
+.browser-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.nav-btn, .option-btn {
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover, .option-btn:hover {
+    background: var(--button-hover-bg);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.address-bar-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.security-indicator {
+    padding: 4px 6px;
+    border-radius: 4px;
+    background: var(--security-bg);
+    color: var(--security-color);
+    font-size: 12px;
+}
+
+.address-bar {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--input-border);
+    border-radius: 20px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-size: 14px;
+    outline: none;
+}
+
+.address-bar:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px var(--accent-color-light);
+}
+
+.go-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+.go-btn:hover {
+    background: var(--accent-color-dark);
+}
+
+.browser-options {
+    display: flex;
+    gap: 4px;
+}
+
+.option-btn.active {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* Tab Bar */
+.tab-bar {
+    display: flex;
+    background: var(--tab-bar-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabs-container {
+    flex: 1;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.tabs-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--tab-bg);
+    border-right: 1px solid var(--border-color);
+    cursor: pointer;
+    min-width: 200px;
+    max-width: 300px;
+    transition: all 0.2s ease;
+}
+
+.tab:hover {
+    background: var(--tab-hover-bg);
+}
+
+.tab.active {
+    background: var(--tab-active-bg);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.tab-title {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-color);
+}
+
+.tab-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1;
+}
+
+.tab-close:hover {
+    background: var(--tab-close-hover-bg);
+    color: var(--text-color);
+}
+
+.new-tab-btn {
+    background: var(--tab-bg);
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-muted);
+    border-left: 1px solid var(--border-color);
+}
+
+.new-tab-btn:hover {
+    background: var(--tab-hover-bg);
+    color: var(--text-color);
+}
+
+/* Content Area */
+.content-area {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--content-bg);
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Start Page */
+.start-page {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-color);
+}
+
+.start-page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.start-page-header h1 {
+    font-size: 48px;
+    font-weight: 300;
+    margin-bottom: 12px;
+    color: var(--heading-color);
+}
+
+.start-page-header p {
+    font-size: 18px;
+    color: var(--text-muted);
+}
+
+.search-section {
+    margin-bottom: 40px;
+}
+
+.home-search {
+    width: 100%;
+    padding: 16px 24px;
+    border: 2px solid var(--input-border);
+    border-radius: 30px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+}
+
+.home-search:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-color-light);
+}
+
+.search-engines {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.search-engine {
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
+    border-radius: 20px;
+    padding: 8px 20px;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.search-engine:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+.quick-access {
+    margin-bottom: 40px;
+}
+
+.quick-access h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--heading-color);
+    text-align: center;
+}
+
+.quick-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.quick-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--quick-link-bg);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+    min-width: 120px;
+}
+
+.quick-link:hover {
+    background: var(--quick-link-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.quick-link-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Privacy Status */
+.privacy-status {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--status-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.status-icon {
+    font-size: 16px;
+}
+
+.status-text {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+/* Web View */
+.web-view {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#content-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
+/* Status Bar */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 12px;
+    background: var(--status-bar-bg);
+    border-top: 1px solid var(--border-color);
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.status-right {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.separator {
+    opacity: 0.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .browser-header {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .browser-controls {
+        order: 2;
+        flex-basis: 100%;
+        justify-content: center;
+    }
+    
+    .address-bar-container {
+        order: 1;
+        flex-basis: calc(100% - 120px);
+    }
+    
+    .browser-options {
+        order: 3;
+        flex-basis: auto;
+    }
+    
+    .quick-links {
+        gap: 16px;
+    }
+    
+    .privacy-status {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .start-page {
+        padding: 20px 16px;
+    }
+    
+    .start-page-header h1 {
+        font-size: 36px;
+    }
+    
+    .quick-links {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    
+    .tab {
+        min-width: 150px;
+    }
+}

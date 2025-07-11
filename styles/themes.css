@@ -1,0 +1,261 @@
+/* Umbra Browser - Theme Styles */
+
+/* Light Theme (Default) */
+.light-theme {
+    --primary-color: #1a73e8;
+    --accent-color: #1a73e8;
+    --accent-color-light: rgba(26, 115, 232, 0.1);
+    --accent-color-dark: #1557b0;
+    
+    --text-color: #202124;
+    --text-muted: #5f6368;
+    --heading-color: #202124;
+    
+    --bg-color: #ffffff;
+    --content-bg: #ffffff;
+    --header-bg: #f8f9fa;
+    --status-bar-bg: #f8f9fa;
+    
+    --tab-bar-bg: #f1f3f4;
+    --tab-bg: #f1f3f4;
+    --tab-hover-bg: #e8eaed;
+    --tab-active-bg: #ffffff;
+    --tab-close-hover-bg: rgba(0, 0, 0, 0.1);
+    
+    --button-bg: #f8f9fa;
+    --button-border: #dadce0;
+    --button-hover-bg: #e8eaed;
+    
+    --input-bg: #ffffff;
+    --input-border: #dadce0;
+    
+    --border-color: #dadce0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    --security-bg: #e8f5e8;
+    --security-color: #137333;
+    
+    --status-bg: #f8f9fa;
+    --quick-link-bg: #ffffff;
+    --quick-link-hover-bg: #f8f9fa;
+}
+
+/* Dark Theme */
+.dark-theme {
+    --primary-color: #8ab4f8;
+    --accent-color: #8ab4f8;
+    --accent-color-light: rgba(138, 180, 248, 0.1);
+    --accent-color-dark: #669df6;
+    
+    --text-color: #e8eaed;
+    --text-muted: #9aa0a6;
+    --heading-color: #ffffff;
+    
+    --bg-color: #202124;
+    --content-bg: #202124;
+    --header-bg: #2d2e30;
+    --status-bar-bg: #2d2e30;
+    
+    --tab-bar-bg: #2d2e30;
+    --tab-bg: #2d2e30;
+    --tab-hover-bg: #3c4043;
+    --tab-active-bg: #202124;
+    --tab-close-hover-bg: rgba(255, 255, 255, 0.1);
+    
+    --button-bg: #3c4043;
+    --button-border: #5f6368;
+    --button-hover-bg: #484a4d;
+    
+    --input-bg: #3c4043;
+    --input-border: #5f6368;
+    
+    --border-color: #5f6368;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    
+    --security-bg: #2d3e2d;
+    --security-color: #81c995;
+    
+    --status-bg: #3c4043;
+    --quick-link-bg: #3c4043;
+    --quick-link-hover-bg: #484a4d;
+}
+
+/* High Contrast Theme */
+.high-contrast-theme {
+    --primary-color: #ffff00;
+    --accent-color: #ffff00;
+    --accent-color-light: rgba(255, 255, 0, 0.2);
+    --accent-color-dark: #cccc00;
+    
+    --text-color: #ffffff;
+    --text-muted: #cccccc;
+    --heading-color: #ffffff;
+    
+    --bg-color: #000000;
+    --content-bg: #000000;
+    --header-bg: #1a1a1a;
+    --status-bar-bg: #1a1a1a;
+    
+    --tab-bar-bg: #1a1a1a;
+    --tab-bg: #1a1a1a;
+    --tab-hover-bg: #333333;
+    --tab-active-bg: #000000;
+    --tab-close-hover-bg: rgba(255, 255, 255, 0.2);
+    
+    --button-bg: #333333;
+    --button-border: #666666;
+    --button-hover-bg: #4d4d4d;
+    
+    --input-bg: #1a1a1a;
+    --input-border: #666666;
+    
+    --border-color: #666666;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+    
+    --security-bg: #003300;
+    --security-color: #00ff00;
+    
+    --status-bg: #1a1a1a;
+    --quick-link-bg: #1a1a1a;
+    --quick-link-hover-bg: #333333;
+}
+
+/* Theme Transition Animation */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.browser-container * {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Privacy Mode Styling */
+.privacy-mode-active {
+    --accent-color: #9334e6;
+    --accent-color-light: rgba(147, 52, 230, 0.1);
+    --accent-color-dark: #7c2d12;
+}
+
+.privacy-mode-active .browser-header {
+    background: linear-gradient(90deg, var(--header-bg) 0%, rgba(147, 52, 230, 0.1) 100%);
+}
+
+.privacy-mode-active .security-indicator {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body:not(.light-theme):not(.high-contrast-theme) {
+        --primary-color: #8ab4f8;
+        --accent-color: #8ab4f8;
+        --accent-color-light: rgba(138, 180, 248, 0.1);
+        --accent-color-dark: #669df6;
+        
+        --text-color: #e8eaed;
+        --text-muted: #9aa0a6;
+        --heading-color: #ffffff;
+        
+        --bg-color: #202124;
+        --content-bg: #202124;
+        --header-bg: #2d2e30;
+        --status-bar-bg: #2d2e30;
+        
+        --tab-bar-bg: #2d2e30;
+        --tab-bg: #2d2e30;
+        --tab-hover-bg: #3c4043;
+        --tab-active-bg: #202124;
+        --tab-close-hover-bg: rgba(255, 255, 255, 0.1);
+        
+        --button-bg: #3c4043;
+        --button-border: #5f6368;
+        --button-hover-bg: #484a4d;
+        
+        --input-bg: #3c4043;
+        --input-border: #5f6368;
+        
+        --border-color: #5f6368;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+        
+        --security-bg: #2d3e2d;
+        --security-color: #81c995;
+        
+        --status-bg: #3c4043;
+        --quick-link-bg: #3c4043;
+        --quick-link-hover-bg: #484a4d;
+    }
+}
+
+/* Focus Styles for Accessibility */
+button:focus,
+input:focus,
+.tab:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    animation: loading-animation 2s infinite;
+}
+
+@keyframes loading-animation {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Status Indicators */
+.status-secure {
+    --security-bg: #e8f5e8;
+    --security-color: #137333;
+}
+
+.status-warning {
+    --security-bg: #fef7e0;
+    --security-color: #b06000;
+}
+
+.status-danger {
+    --security-bg: #fce8e6;
+    --security-color: #d33b13;
+}
+
+/* Dark theme status colors */
+.dark-theme .status-secure {
+    --security-bg: #2d3e2d;
+    --security-color: #81c995;
+}
+
+.dark-theme .status-warning {
+    --security-bg: #3e3325;
+    --security-color: #fdd663;
+}
+
+.dark-theme .status-danger {
+    --security-bg: #3e2723;
+    --security-color: #f28b82;
+}
